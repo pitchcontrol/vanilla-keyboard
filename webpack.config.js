@@ -1,6 +1,6 @@
 const path = require("path");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const libraryName = 'VannilaKeyboard';
+const libraryName = 'VanillaKeyboard';
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');

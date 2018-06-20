@@ -1,6 +1,6 @@
 import {Keyboard} from './src/keyboard.js'
 
-let keyboard = new Keyboard('input', {hideDelay: null});
+let keyboard = new Keyboard('', {hideDelay: null});
 
 keyboard.show();
 
