@@ -88,27 +88,32 @@ export class Keyboard {
         s += "</div>";
 
         this.layout.innerHTML = s;
-        this.layout.addEventListener('click', (event) => {
+
+        this.clickHandler = function () {
             if (event.target) {
                 let key = event.target.dataset.key || event.target.parentNode.dataset.key;
                 if (key !== undefined) {
-                    this.write(key);
+                    self.write(key);
                     return;
                 }
                 let click = event.target.dataset.click || event.target.parentNode.dataset.click;
                 if (click !== undefined) {
-                    this[click]();
+                    self[click]();
                 }
             } else
-                this.updateCursor();
-        });
-        this.currentElement.addEventListener('input', (event) => {
-            this.layout.querySelector('.on-screen-keyboard-layout .keyboardHeader>span').innerText = this.currentElement.value;
-            this.show();
-        });
-        this.currentElement.addEventListener('focus', event => {
-            this.show();
-        });
+                self.updateCursor();
+        };
+
+        this.layout.addEventListener('click', this.clickHandler);
+        this.inputHandler = function () {
+            self.layout.querySelector('.on-screen-keyboard-layout .keyboardHeader>span').innerText = self.currentElement.value;
+            self.show();
+        };
+        this.currentElement.addEventListener('input', this.inputHandler);
+        this.focusHandler = function () {
+            self.show();
+        };
+        this.currentElement.addEventListener('focus', this.focusHandler);
     }
 
     hideBlocks(array) {
@@ -249,6 +254,17 @@ export class Keyboard {
         // this.layout.querySelector('.on-screen-keyboard-layout .keyboardHeader>span').innerText = this.currentElement.value;
         // this.currentElement.dispatchEvent(new CustomEvent("writeKeyboard", {detail: {value: this.currentElement.value}}));
         this.currentElement.dispatchEvent(new Event('input'));
+    }
+
+    delete() {
+        this.currentElement.removeEventListener('input', this);
+        clearTimeout(this.timeOut);
+        document.body.removeChild(this.layout);
+        this.currentElement.removeEventListener('click', this.clickHandler);
+        this.currentElement.removeEventListener('focus', this.focusHandler);
+        this.currentElement.removeEventListener('input', this.inputHandler);
+        this.currentElement = null;
+        this.layout = null;
     }
 
     toString() {
