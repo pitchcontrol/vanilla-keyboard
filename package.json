@@ -1,0 +1,29 @@
+{
+  "name": "vanilla-keyboard",
+  "version": "1.0.0",
+  "description": "On-screen keyboard ",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm run build",
+    "build": "webpack --mode=production"
+  },
+  "keywords": [
+    "keyboard"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pitchcontrol/vanilla-keyboard.git"
+  },
+  "author": "Nekrasov Stanislav",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.11",
+    "mini-css-extract-plugin": "^0.4.0",
+    "optimize-css-assets-webpack-plugin": "^4.0.2",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.8"
+  }
+}

@@ -1,0 +1,156 @@
+.on-screen-keyboard-layout {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -25%
+}
+
+.on-screen-keyboard-layout .keyboard {
+    padding: 10px;
+    margin: 0 auto;
+    display: block;
+    background: transparent;
+    bottom: -350px;
+    right: 160px;
+    z-index: 100;
+    box-shadow: 0 0 8px #999;
+}
+
+.on-screen-keyboard-layout .keyboard:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.on-screen-keyboard-layout .keyboardHeader {
+    position: relative;
+    height: 30px;
+    font-size: 1.9em;
+}
+
+.on-screen-keyboard-layout .keyboardHeader div {
+    color: #fff;
+    background-color: #7b8490;
+    padding: 3px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: absolute;
+    cursor: pointer;
+    right: -10px;
+    top: -40px;
+}
+
+.on-screen-keyboard-layout .keyboardCapitalLetter {
+    display: none;
+}
+
+.on-screen-keyboard-layout .keyboardSmallLetter {
+    display: block;
+}
+
+.on-screen-keyboard-layout .keyboardNumber,
+.on-screen-keyboard-layout .keyboardSymbols,
+.on-screen-keyboard-layout .keyboardEnCapitalLetter,
+.on-screen-keyboard-layout .keyboardEnSmallLetter
+{
+    display: none;
+}
+
+.on-screen-keyboard-layout  .button {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    float: left;
+    margin-right: 7px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 1.9em;
+    border: 1px solid lightgray;
+    background: #ffffff; /* old browsers */
+}
+
+.on-screen-keyboard-layout  .button:hover {
+    border-color: rgba(82, 168, 236, 0.8);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+.on-screen-keyboard-layout .buttonDown {
+    background: none;
+    background-color: #c9cdd5;
+    box-shadow: none;
+}
+
+.on-screen-keyboard-layout  .button_special {
+    font-size: 1.3em;
+}
+
+.on-screen-keyboard-layout  .row-2nd {
+    margin-left: 13px;
+    clear: left;
+}
+
+.on-screen-keyboard-layout  .row-3rd {
+    margin-left: 39px;
+    clear: left;
+}
+
+.on-screen-keyboard-layout .row-4th {
+    margin-left: 78px;
+    clear: left;
+}
+
+.on-screen-keyboard-layout .keyboardNumber .button {
+    width: 75px;
+}
+
+.on-screen-keyboard-layout .keyboardSymbols .button {
+    width: 75px;
+}
+
+.on-screen-keyboard-layout .keyboardEnSmallLetter .button {
+    width: 65px;
+}
+
+.on-screen-keyboard-layout .keyboardEnCapitalLetter .button {
+    width: 65px;
+}
+
+.on-screen-keyboard-layout .key {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 16px;
+    text-shadow: 0px 1px 1px #ffffff;
+    filter: dropshadow(color=#ffffff, offx=0, offy=1);
+}
+
+.on-screen-keyboard-layout  .key_del {
+    padding-top: 18px;
+}
+
+.on-screen-keyboard-layout  .key_enter {
+    padding-top: 18px;
+}
+
+.on-screen-keyboard-layout  .key_smallletter {
+    padding-top: 18px;
+}
+
+.on-screen-keyboard-layout  .key_capitalletterleft {
+    padding-top: 18px;
+}
+
+.on-screen-keyboard-layout  .key_capitalletterright {
+    padding-top: 18px;
+}
+
+.on-screen-keyboard-layout .key_number {
+    padding-top: 18px;
+}
+
+.on-screen-keyboard-layout .key_symbols {
+    padding-top: 18px;
+}
+
