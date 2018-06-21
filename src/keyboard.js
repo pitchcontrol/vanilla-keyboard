@@ -22,6 +22,8 @@ export class Keyboard {
             autoFocus: true
         }, settings);
         this.keyboard = {"default": defaultKeyboard};
+        this.capitalLetter = false;
+        this.lang = 'RU';
         this.generateKeyboard("default");
     }
 
@@ -124,6 +126,9 @@ export class Keyboard {
         if (this.settings.autoFocus === true) {
             this.currentElement.focus();
         }
+        if (this.settings.lang === 'EN') {
+            this.changeLanguage();
+        }
     }
 
     hideBlocks(array) {
@@ -138,6 +143,14 @@ export class Keyboard {
         });
     }
 
+    changeLanguage() {
+        if (this.lang === 'RU') {
+            this.changeToEnSmallLetter()
+        } else {
+            this.changeToSmallLetter()
+        }
+    }
+
     changeToSmallLetter() {
         this.hideBlocks([".on-screen-keyboard-layout .keyboardCapitalLetter",
             ".on-screen-keyboard-layout .keyboardNumber",
@@ -145,7 +158,8 @@ export class Keyboard {
             ".on-screen-keyboard-layout .keyboardEnCapitalLetter",
             ".on-screen-keyboard-layout .keyboardEnSmallLetter"]);
         this.showBlocks([".on-screen-keyboard-layout .keyboardSmallLetter"]);
-        this.updateCursor();
+        this.capitalLetter = false;
+        this.lang = 'RU';
     }
 
     changeToCapitalLetter() {
@@ -155,7 +169,8 @@ export class Keyboard {
             ".on-screen-keyboard-layout .keyboardSymbols",
             ".on-screen-keyboard-layout .keyboardEnCapitalLetter",
             ".on-screen-keyboard-layout .keyboardEnSmallLetter"]);
-        this.updateCursor();
+        this.capitalLetter = true;
+        this.lang = 'RU';
     }
 
     changeToEnSmallLetter() {
@@ -165,7 +180,8 @@ export class Keyboard {
             ".on-screen-keyboard-layout .keyboardEnCapitalLetter",
             ".on-screen-keyboard-layout .keyboardSmallLetter"]);
         this.showBlocks([".on-screen-keyboard-layout .keyboardEnSmallLetter"]);
-        this.updateCursor();
+        this.capitalLetter = false;
+        this.lang = 'EN';
     }
 
     changeToEnCapitalLetter() {
@@ -175,7 +191,8 @@ export class Keyboard {
             ".on-screen-keyboard-layout .keyboardSymbols",
             ".on-screen-keyboard-layout .keyboardCapitalLetter",
             ".on-screen-keyboard-layout .keyboardEnSmallLetter"]);
-        this.updateCursor();
+        this.capitalLetter = true;
+        this.lang = 'EN';
     }
 
     changeToNumber() {
@@ -185,7 +202,6 @@ export class Keyboard {
             ".on-screen-keyboard-layout .keyboardSmallLetter",
             ".on-screen-keyboard-layout .keyboardEnCapitalLetter",
             ".on-screen-keyboard-layout .keyboardEnSmallLetter"]);
-        this.updateCursor();
     }
 
     changeToSymbols() {
@@ -195,7 +211,6 @@ export class Keyboard {
             ".on-screen-keyboard-layout .keyboardEnCapitalLetter",
             ".on-screen-keyboard-layout .keyboardEnSmallLetter"]);
         this.showBlocks([".on-screen-keyboard-layout .keyboardSymbols"]);
-        this.updateCursor();
     }
 
     del() {
@@ -243,6 +258,12 @@ export class Keyboard {
 
     hide() {
         document.body.removeChild(this.layout);
+    }
+
+    clear() {
+        this.currentElement.value = '';
+        this.currentElementCursorPosition = 0;
+        this.updateCursor();
     }
 
     write(m) {
