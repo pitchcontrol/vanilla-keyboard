@@ -1,6 +1,6 @@
 {
   "name": "vanilla-keyboard",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "On-screen keyboard ",
   "main": "main.js",
   "scripts": {

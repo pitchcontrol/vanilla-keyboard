@@ -18,7 +18,8 @@ export class Keyboard {
             text: {
                 close: "close"
             },
-            hideDelay: 5000
+            hideDelay: 5000,
+            autoFocus: true
         }, settings);
         this.keyboard = {"default": defaultKeyboard};
         this.generateKeyboard("default");
@@ -114,6 +115,15 @@ export class Keyboard {
             self.show();
         };
         this.currentElement.addEventListener('focus', this.focusHandler);
+
+        if (this.settings.value) {
+            this.currentElement.value = this.settings.value;
+            this.currentElementCursorPosition = this.settings.value.length;
+            this.layout.querySelector('.on-screen-keyboard-layout .keyboardHeader>span').innerText = this.settings.value;
+        }
+        if (this.settings.autoFocus === true) {
+            this.currentElement.focus();
+        }
     }
 
     hideBlocks(array) {
@@ -257,7 +267,6 @@ export class Keyboard {
     }
 
     delete() {
-        this.currentElement.removeEventListener('input', this);
         clearTimeout(this.timeOut);
         document.body.removeChild(this.layout);
         this.currentElement.removeEventListener('click', this.clickHandler);
