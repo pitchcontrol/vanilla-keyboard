@@ -1,6 +1,6 @@
 import {Keyboard} from './src/keyboard.js'
 
-let keyboard = new Keyboard('input', {hideDelay: null, value: 'dadada', lang: 'EN'});
+let keyboard = new Keyboard('input', {hideDelay: 30, value: 'dadada', lang: 'EN'});
 
 keyboard.show();
 
@@ -9,7 +9,9 @@ keyboard.currentElement.addEventListener('input', (event) => {
 });
 
 //keyboard.clear();
-// keyboard.delete();
-setTimeout(function () {
-    keyboard.changeLanguage();
-}, 3000);
+setTimeout(()=>{
+    keyboard.delete();
+}, 5000);
+// setTimeout(function () {
+//     keyboard.changeLanguage();
+// }, 3000);

@@ -257,7 +257,8 @@ export class Keyboard {
     }
 
     hide() {
-        document.body.removeChild(this.layout);
+        if (document.body.contains(this.layout))
+            document.body.removeChild(this.layout);
     }
 
     clear() {
@@ -289,7 +290,7 @@ export class Keyboard {
 
     delete() {
         clearTimeout(this.timeOut);
-        document.body.removeChild(this.layout);
+        this.hide();
         this.currentElement.removeEventListener('click', this.clickHandler);
         this.currentElement.removeEventListener('focus', this.focusHandler);
         this.currentElement.removeEventListener('input', this.inputHandler);
